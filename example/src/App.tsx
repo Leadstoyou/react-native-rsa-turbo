@@ -1,12 +1,13 @@
 import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-rsa-turbo';
+import { RSA } from 'react-native-rsa-turbo';
 
-const result = multiply(3, 7);
+const result = await RSA.generateKeys(2048);
 
 export default function App() {
+  console.log('result', result.public);
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: {result.public}</Text>
     </View>
   );
 }
