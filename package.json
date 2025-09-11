@@ -2,17 +2,18 @@
   "name": "react-native-rsa-turbo",
   "version": "0.1.0",
   "description": "react native rsa turbo",
-  "main": "./src/index.tsx",
-  "types": "./src/index.tsx",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
       "source": "./src/index.tsx",
-      "types": "./src/index.tsx",
-      "default": "./src/index.tsx"
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
     },
     "./package.json": "./package.json"
   },
   "files": [
+    "lib",
     "src",
     "android",
     "ios",
@@ -78,7 +79,7 @@
     "prettier": "^3.6.2",
     "react": "19.0.0",
     "react-native": "0.79.6",
-    "react-native-builder-bob": "^0.40.13",
+    "react-native-builder-bob": "^0.38.4",
     "release-it": "^19.0.4",
     "turbo": "^2.5.6",
     "typescript": "^5.9.2"
