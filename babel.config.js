@@ -2,7 +2,11 @@ module.exports = {
   overrides: [
     {
       exclude: /\/node_modules\//,
-      presets: ['module:react-native-builder-bob/babel-preset'],
+      presets: [
+        ['module:react-native-builder-bob/babel-preset', {
+          modules: 'commonjs'
+        }]
+      ],
     },
     {
       include: /\/node_modules\//,
