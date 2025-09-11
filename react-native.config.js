@@ -2,11 +2,10 @@ module.exports = {
   dependency: {
     platforms: {
       android: {
-        sourceDir: '../android/',
-        packageImportPath: 'import com.rsaturbo.RsaTurboPackage;',
+        sourceDir: './android',
       },
       ios: {
-        podspecPath: '../ios/react-native-rsa-turbo.podspec',
+        podspecPath: './react-native-rsa-turbo.podspec',
       },
     },
   },
