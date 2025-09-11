@@ -1,13 +1,32 @@
+import { useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { RSA } from 'react-native-rsa-turbo';
 
-const result = await RSA.generateKeys(2048);
+type KeyPair = {
+  publicKey: string;
+  privateKey?: string;
+};
 
 export default function App() {
-  console.log('result', result.public);
+  const [result, setResult] = useState<KeyPair | null>(null);
+
+  useEffect(() => {
+    RSA.generateKeys(2048)
+      .then((keys: KeyPair) => {
+        setResult(keys);
+        console.log('Generated keys:', keys);
+      })
+      .catch((err: any) => {
+        console.log('Error generating keys:', err);
+      });
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Result: {result.public}</Text>
+      <Text>Public Key:</Text>
+      <Text numberOfLines={5} ellipsizeMode="tail">
+        {result?.publicKey || 'Generating...'}
+      </Text>
     </View>
   );
 }
@@ -17,5 +36,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 16,
   },
 });

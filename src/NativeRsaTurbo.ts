@@ -1,6 +1,6 @@
 import { type TurboModule, TurboModuleRegistry } from 'react-native';
 
-export type KeyPair = { private?: string; public: string };
+export type KeyPair = { privateKey?: string; publicKey: string };
 export type Algorithm = 'SHA512withRSA' | 'SHA256withRSA';
 
 export interface Spec extends TurboModule {
@@ -20,8 +20,8 @@ export interface Spec extends TurboModule {
     algorithm?: Algorithm
   ): Promise<boolean>;
 
-  kcGenerateKeys(keyTag: string, bits: number): Promise<{ public: string }>;
-  kcGenerate(keyTag: string): Promise<{ public: string }>;
+  kcGenerateKeys(keyTag: string, bits: number): Promise<{ publicKey: string }>;
+  kcGenerate(keyTag: string): Promise<{ publicKey: string }>;
   kcEncrypt(message: string, keyTag: string): Promise<string>;
   kcDecrypt(encoded: string, keyTag: string): Promise<string>;
   kcSign(

@@ -1,0 +1,6 @@
+D:/my_project/react_native/react-native-rsa-turbo/example/android/app/.cxx/Debug/333l4ke6/armeabi-v7a/CMakeFiles/appmodules.dir
+D:/my_project/react_native/react-native-rsa-turbo/example/android/app/.cxx/Debug/333l4ke6/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/my_project/react_native/react-native-rsa-turbo/example/android/app/.cxx/Debug/333l4ke6/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+D:/my_project/react_native/react-native-rsa-turbo/example/android/app/.cxx/Debug/333l4ke6/armeabi-v7a/RsaTurboSpec_autolinked_build/CMakeFiles/react_codegen_RsaTurboSpec.dir
+D:/my_project/react_native/react-native-rsa-turbo/example/android/app/.cxx/Debug/333l4ke6/armeabi-v7a/RsaTurboSpec_autolinked_build/CMakeFiles/edit_cache.dir
+D:/my_project/react_native/react-native-rsa-turbo/example/android/app/.cxx/Debug/333l4ke6/armeabi-v7a/RsaTurboSpec_autolinked_build/CMakeFiles/rebuild_cache.dir

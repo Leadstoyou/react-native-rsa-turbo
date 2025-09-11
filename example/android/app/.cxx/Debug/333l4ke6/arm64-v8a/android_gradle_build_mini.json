@@ -1,0 +1,37 @@
+{
+  "buildFiles": [
+    "D:\\my_project\\react_native\\react-native-rsa-turbo\\android\\build\\generated\\source\\codegen\\jni\\CMakeLists.txt",
+    "D:\\my_project\\react_native\\react-native-rsa-turbo\\example\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\ADMIN\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\my_project\\react_native\\react-native-rsa-turbo\\example\\android\\app\\.cxx\\Debug\\333l4ke6\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\ADMIN\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\my_project\\react_native\\react-native-rsa-turbo\\example\\android\\app\\.cxx\\Debug\\333l4ke6\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "react_codegen_RsaTurboSpec::@08603d7ab3dc2ae06f38": {
+      "artifactName": "react_codegen_RsaTurboSpec",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "appmodules::@6890427a1f51a3e7e1df": {
+      "artifactName": "appmodules",
+      "abi": "arm64-v8a",
+      "output": "D:\\my_project\\react_native\\react-native-rsa-turbo\\example\\android\\app\\build\\intermediates\\cxx\\Debug\\333l4ke6\\obj\\arm64-v8a\\libappmodules.so",
+      "runtimeFiles": [
+        "C:\\Users\\ADMIN\\.gradle\\caches\\8.13\\transforms\\ecc360991f6e72abc8ac0f2009a2f64d\\transformed\\fbjni-0.7.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so",
+        "C:\\Users\\ADMIN\\.gradle\\caches\\8.13\\transforms\\33b1ee09c5d103c8511704d0785c9f6c\\transformed\\react-android-0.79.6-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
+        "C:\\Users\\ADMIN\\.gradle\\caches\\8.13\\transforms\\33b1ee09c5d103c8511704d0785c9f6c\\transformed\\react-android-0.79.6-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so"
+      ]
+    }
+  }
+}

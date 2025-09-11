@@ -3,16 +3,17 @@ package com.rsaturbo
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import com.facebook.fbreact.specs.NativeRSATurboSpec
+import com.rsaturbo.NativeRsaTurboSpec
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.Arguments
 import java.security.*
 import java.security.spec.X509EncodedKeySpec
 import javax.crypto.Cipher
 import android.util.Base64
 
 class RSATurboModule(reactContext: ReactApplicationContext) :
-  NativeRSATurboSpec(reactContext) {
+  NativeRsaTurboSpec(reactContext) {
 
   override fun getName() = "RSATurbo"
 
@@ -24,7 +25,10 @@ class RSATurboModule(reactContext: ReactApplicationContext) :
       val kp = kpg.generateKeyPair()
       val privPem = Pem.encodePrivate(kp.private)
       val pubPem  = Pem.encodePublic(kp.public)
-      promise.resolve(mapOf("private" to privPem, "public" to pubPem))
+      val result = Arguments.createMap()
+      result.putString("publicKey", pubPem)
+      result.putString("privateKey", privPem)
+      promise.resolve(result)
     } catch (e: Exception) { promise.reject("E_GEN", e) }
   }
 
@@ -93,11 +97,38 @@ class RSATurboModule(reactContext: ReactApplicationContext) :
       )
       val kp = kpg.generateKeyPair()
       val pubPem = Pem.encodePublic(kp.public)
-      promise.resolve(mapOf("public" to pubPem))
+      val result = Arguments.createMap()
+      result.putString("publicKey", pubPem)
+      promise.resolve(result)
     } catch (e: Exception) { promise.reject("E_KC_GEN", e) }
   }
 
   override fun kcGenerate(keyTag: String, promise: Promise) = kcGenerateKeys(keyTag, 2048.0, promise)
+
+  override fun kcEncrypt(message: String, keyTag: String, promise: Promise) {
+    // TODO: Implement Android Keystore encryption using keyTag
+    promise.reject("E_NOT_IMPL", "kcEncrypt not implemented yet")
+  }
+
+  override fun kcDecrypt(encoded: String, keyTag: String, promise: Promise) {
+    // TODO: Implement Android Keystore decryption using keyTag
+    promise.reject("E_NOT_IMPL", "kcDecrypt not implemented yet")
+  }
+
+  override fun kcSign(message: String, keyTag: String, algorithm: String?, promise: Promise) {
+    // TODO: Implement Android Keystore signing using keyTag
+    promise.reject("E_NOT_IMPL", "kcSign not implemented yet")
+  }
+
+  override fun kcVerify(signature: String, message: String, keyTag: String, algorithm: String?, promise: Promise) {
+    // TODO: Implement Android Keystore verify using keyTag
+    promise.reject("E_NOT_IMPL", "kcVerify not implemented yet")
+  }
+
+  override fun kcDeletePrivateKey(keyTag: String, promise: Promise) {
+    // TODO: Implement Android Keystore private key deletion using keyTag
+    promise.reject("E_NOT_IMPL", "kcDeletePrivateKey not implemented yet")
+  }
 
   // kcEncrypt/kcDecrypt/kcSign/kcVerify/kcDeletePrivateKey tương tự:
   // - Lấy key bằng KeyStore.getInstance("AndroidKeyStore").getKey(keyTag, null)

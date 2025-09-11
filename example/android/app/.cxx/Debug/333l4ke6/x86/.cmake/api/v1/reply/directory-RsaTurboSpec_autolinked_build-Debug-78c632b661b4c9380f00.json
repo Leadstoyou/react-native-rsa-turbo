@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "RsaTurboSpec_autolinked_build",
+		"source" : "D:/my_project/react_native/react-native-rsa-turbo/android/build/generated/source/codegen/jni"
+	}
+}

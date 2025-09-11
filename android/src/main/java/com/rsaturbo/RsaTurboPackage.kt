@@ -9,8 +9,8 @@ import java.util.HashMap
 
 class RsaTurboPackage : BaseReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == RsaTurboModule.NAME) {
-      RsaTurboModule(reactContext)
+    return if (name == "RSATurbo") {
+      RSATurboModule(reactContext)
     } else {
       null
     }
@@ -19,9 +19,9 @@ class RsaTurboPackage : BaseReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      moduleInfos[RsaTurboModule.NAME] = ReactModuleInfo(
-        RsaTurboModule.NAME,
-        RsaTurboModule.NAME,
+      moduleInfos["RSATurbo"] = ReactModuleInfo(
+        "RSATurbo",
+        "RSATurbo",
         false,  // canOverrideExistingModule
         false,  // needsEagerInit
         false,  // isCxxModule
