@@ -3,7 +3,6 @@
   "version": "0.1.4",
   "description": "react native rsa turbo",
   "main": "./lib/module/index.js",
-  "react-native": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
@@ -59,10 +58,6 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "sideEffects": false,
-  "engines": {
-    "node": ">=18.17"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/compat": "^1.3.2",
@@ -90,8 +85,8 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-native": ">=0.74"
+    "react": "*",
+    "react-native": "*"
   },
   "workspaces": [
     "example"
@@ -159,17 +154,6 @@
     "jsSrcsDir": "src",
     "android": {
       "javaPackageName": "com.rsaturbo"
-    },
-    "ios": {
-      "scriptPhases": [
-        {
-          "name": "RN Codegen (react-native-rsa-turbo)",
-          "script": "export SRCS_DIR=${PODS_TARGET_SRCROOT}/../ && node ../node_modules/react-native/scripts/generate-specs-cli.js",
-          "execution_position": "before_compile",
-          "input_files": [],
-          "output_files": []
-        }
-      ]
     }
   },
   "create-react-native-library": {
