@@ -141,11 +141,15 @@
     "targets": [
       [
         "module",
-        { "esm": false }
+        {
+          "esm": false
+        }
       ],
       [
         "typescript",
-        { "project": "tsconfig.build.json" }
+        {
+          "project": "tsconfig.build.json"
+        }
       ]
     ]
   },
