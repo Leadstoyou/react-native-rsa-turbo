@@ -14,6 +14,9 @@ import {
 } from 'react-native';
 import { RSA, RSAKeychain, type Algorithm } from 'react-native-rsa-turbo';
 
+// Import polyfills first
+import '../polyfills';
+
 type KeyPair = { publicKey: string; privateKey: string };
 
 const DEFAULT_MESSAGE = 'Hello from RN + RSA Turbo!';
@@ -28,7 +31,9 @@ function ExpandableMono({
   max?: number;
 }) {
   const [open, setOpen] = useState(false);
-  if (!value) return <Text style={styles.mono}>—</Text>;
+  if (!value) {
+    return <Text style={styles.mono}>—</Text>;
+  }
   const tooLong = value.length > max;
   const shown = open || !tooLong ? value : value.slice(0, max) + ' …';
   return (
@@ -108,30 +113,42 @@ export default function App() {
 
   const onPemEncrypt = () =>
     runSafe(async () => {
-      if (!pemKeys?.publicKey) throw new Error('No PEM public key yet');
+      if (!pemKeys?.publicKey) {
+        throw new Error('No PEM public key yet');
+      }
       const enc = await RSA.encrypt(message, pemKeys.publicKey);
       setPemEnc(enc);
     });
 
   const onPemDecrypt = () =>
     runSafe(async () => {
-      if (!pemKeys?.privateKey) throw new Error('No PEM private key yet');
-      if (!pemEnc) throw new Error('Nothing to decrypt. Encrypt first.');
+      if (!pemKeys?.privateKey) {
+        throw new Error('No PEM private key yet');
+      }
+      if (!pemEnc) {
+        throw new Error('Nothing to decrypt. Encrypt first.');
+      }
       const dec = await RSA.decrypt(pemEnc, pemKeys.privateKey);
       setPemDec(dec);
     });
 
   const onPemSign = () =>
     runSafe(async () => {
-      if (!pemKeys?.privateKey) throw new Error('No PEM private key yet');
+      if (!pemKeys?.privateKey) {
+        throw new Error('No PEM private key yet');
+      }
       const sig = await RSA.sign(message, pemKeys.privateKey, algo);
       setPemSig(sig);
     });
 
   const onPemVerify = () =>
     runSafe(async () => {
-      if (!pemKeys?.publicKey) throw new Error('No PEM public key yet');
-      if (!pemSig) throw new Error('No signature yet. Sign first.');
+      if (!pemKeys?.publicKey) {
+        throw new Error('No PEM public key yet');
+      }
+      if (!pemSig) {
+        throw new Error('No signature yet. Sign first.');
+      }
       const ok = await RSA.verify(pemSig, message, pemKeys.publicKey, algo);
       setPemVerify(ok);
     });
@@ -139,7 +156,9 @@ export default function App() {
   // ===== Android Keystore actions =====
   const onKsGenerate = () =>
     runSafe(async () => {
-      if (!isAndroid) return;
+      if (!isAndroid) {
+        return;
+      }
       resetKs();
       const b = parseInt(bits || '2048', 10) || 2048;
       const r = await RSAKeychain.generateKeys(keyTag, b);
@@ -148,40 +167,57 @@ export default function App() {
 
   const onKsEncrypt = () =>
     runSafe(async () => {
-      if (!isAndroid) return;
-      if (!ksPub)
+      if (!isAndroid) {
+        return;
+      }
+      if (!ksPub) {
         throw new Error('No Keystore public key yet. Generate first.');
+      }
       const enc = await RSAKeychain.encrypt(message, keyTag);
       setKsEnc(enc);
     });
 
   const onKsDecrypt = () =>
     runSafe(async () => {
-      if (!isAndroid) return;
-      if (!ksEnc) throw new Error('Nothing to decrypt. Encrypt first.');
+      if (!isAndroid) {
+        return;
+      }
+      if (!ksEnc) {
+        throw new Error('Nothing to decrypt. Encrypt first.');
+      }
       const dec = await RSAKeychain.decrypt(ksEnc, keyTag);
       setKsDec(dec);
     });
 
   const onKsSign = () =>
     runSafe(async () => {
-      if (!isAndroid) return;
-      if (!ksPub) throw new Error('No Keystore key yet. Generate first.');
+      if (!isAndroid) {
+        return;
+      }
+      if (!ksPub) {
+        throw new Error('No Keystore key yet. Generate first.');
+      }
       const sig = await RSAKeychain.sign(message, keyTag, algo);
       setKsSig(sig);
     });
 
   const onKsVerify = () =>
     runSafe(async () => {
-      if (!isAndroid) return;
-      if (!ksSig) throw new Error('No signature yet. Sign first.');
+      if (!isAndroid) {
+        return;
+      }
+      if (!ksSig) {
+        throw new Error('No signature yet. Sign first.');
+      }
       const ok = await RSAKeychain.verify(ksSig, message, keyTag, algo);
       setKsVerify(ok);
     });
 
   const onKsDelete = () =>
     runSafe(async () => {
-      if (!isAndroid) return;
+      if (!isAndroid) {
+        return;
+      }
       await RSAKeychain.deletePrivateKey(keyTag);
       setKsPub('');
       resetKs();

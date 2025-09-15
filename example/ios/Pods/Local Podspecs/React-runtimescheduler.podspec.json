@@ -63,10 +63,7 @@
     "React-jsinspectortracing": [
 
     ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
+    "React-jsc": [
 
     ]
   }

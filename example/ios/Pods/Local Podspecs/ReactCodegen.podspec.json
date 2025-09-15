@@ -80,10 +80,7 @@
     "React-RCTAppDelegate": [
 
     ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
+    "React-jsc": [
 
     ]
   },

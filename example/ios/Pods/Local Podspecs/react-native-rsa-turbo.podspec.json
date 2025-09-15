@@ -16,33 +16,12 @@
   "static_framework": true,
   "source_files": "ios/**/*.{h,m,mm}",
   "pod_target_xcconfig": {
-    "HEADER_SEARCH_PATHS": "$(PODS_ROOT)/Headers/Public/React-Codegen"
+    "CLANG_CXX_LANGUAGE_STANDARD": "c++17",
+    "CLANG_CXX_LIBRARY": "libc++"
   },
   "dependencies": {
     "React-Core": [
 
-    ],
-    "React-Codegen": [
-
-    ],
-    "FBReactNativeSpec": [
-
-    ],
-    "RCTRequired": [
-
-    ],
-    "RCTTypeSafety": [
-
-    ],
-    "ReactCommon/turbomodule/core": [
-
-    ],
-    "ReactCommon/turbomodule/bridging": [
-
-    ],
-    "React-jsi": [
-
     ]
-  },
-  "compiler_flags": "-DRCT_NEW_ARCH_ENABLED=1"
+  }
 }

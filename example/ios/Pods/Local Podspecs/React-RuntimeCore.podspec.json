@@ -65,10 +65,7 @@
     "React-Fabric": [
 
     ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
+    "React-jsc": [
 
     ],
     "React-jsinspector": [
