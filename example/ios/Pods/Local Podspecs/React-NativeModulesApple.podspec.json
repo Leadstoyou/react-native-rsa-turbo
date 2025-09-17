@@ -53,7 +53,10 @@
     "React-jsinspector": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-hermes": [
 
     ]
   }

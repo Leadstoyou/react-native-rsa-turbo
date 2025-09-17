@@ -220,12 +220,19 @@ RCT_EXPORT_METHOD(kcGenerateKeys:(NSString *)keyTag
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
     @try {
-        // Delete existing key if it exists
-        NSDictionary *deleteQuery = @{
+        // Delete existing keys if they exist
+        NSDictionary *deletePrivateQuery = @{
             (__bridge NSString *)kSecClass: (__bridge NSString *)kSecClassKey,
             (__bridge NSString *)kSecAttrApplicationTag: [keyTag dataUsingEncoding:NSUTF8StringEncoding],
         };
-        SecItemDelete((__bridge CFDictionaryRef)deleteQuery);
+        SecItemDelete((__bridge CFDictionaryRef)deletePrivateQuery);
+        
+        NSString *publicKeyTag = [keyTag stringByAppendingString:@"-pub"];
+        NSDictionary *deletePublicQuery = @{
+            (__bridge NSString *)kSecClass: (__bridge NSString *)kSecClassKey,
+            (__bridge NSString *)kSecAttrApplicationTag: [publicKeyTag dataUsingEncoding:NSUTF8StringEncoding],
+        };
+        SecItemDelete((__bridge CFDictionaryRef)deletePublicQuery);
         
         // Generate new key pair in keychain
         NSMutableDictionary *keyPairAttr = [[NSMutableDictionary alloc] init];
@@ -234,6 +241,10 @@ RCT_EXPORT_METHOD(kcGenerateKeys:(NSString *)keyTag
         keyPairAttr[(__bridge NSString *)kSecPrivateKeyAttrs] = @{
             (__bridge NSString *)kSecAttrIsPermanent: @YES,
             (__bridge NSString *)kSecAttrApplicationTag: [keyTag dataUsingEncoding:NSUTF8StringEncoding],
+        };
+        keyPairAttr[(__bridge NSString *)kSecPublicKeyAttrs] = @{
+            (__bridge NSString *)kSecAttrIsPermanent: @YES,
+            (__bridge NSString *)kSecAttrApplicationTag: [[keyTag stringByAppendingString:@"-pub"] dataUsingEncoding:NSUTF8StringEncoding],
         };
         
         SecKeyRef publicKey = NULL;
@@ -432,13 +443,24 @@ RCT_EXPORT_METHOD(kcDeletePrivateKey:(NSString *)keyTag
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
     @try {
-        NSDictionary *deleteQuery = @{
+        // Delete private key
+        NSDictionary *deletePrivateQuery = @{
             (__bridge NSString *)kSecClass: (__bridge NSString *)kSecClassKey,
             (__bridge NSString *)kSecAttrApplicationTag: [keyTag dataUsingEncoding:NSUTF8StringEncoding],
         };
+        OSStatus privateStatus = SecItemDelete((__bridge CFDictionaryRef)deletePrivateQuery);
         
-        OSStatus status = SecItemDelete((__bridge CFDictionaryRef)deleteQuery);
-        resolve(@(status == errSecSuccess || status == errSecItemNotFound));
+        // Delete public key
+        NSString *publicKeyTag = [keyTag stringByAppendingString:@"-pub"];
+        NSDictionary *deletePublicQuery = @{
+            (__bridge NSString *)kSecClass: (__bridge NSString *)kSecClassKey,
+            (__bridge NSString *)kSecAttrApplicationTag: [publicKeyTag dataUsingEncoding:NSUTF8StringEncoding],
+        };
+        OSStatus publicStatus = SecItemDelete((__bridge CFDictionaryRef)deletePublicQuery);
+        
+        BOOL success = (privateStatus == errSecSuccess || privateStatus == errSecItemNotFound) &&
+                      (publicStatus == errSecSuccess || publicStatus == errSecItemNotFound);
+        resolve(@(success));
     } @catch (NSException *exception) {
         reject(@"E_KC_DEL", exception.reason, nil);
     }
@@ -514,9 +536,10 @@ RCT_EXPORT_METHOD(kcDeletePrivateKey:(NSString *)keyTag
 }
 
 - (SecKeyRef)getKeychainPublicKey:(NSString *)keyTag {
+    NSString *publicKeyTag = [keyTag stringByAppendingString:@"-pub"];
     NSDictionary *query = @{
         (__bridge NSString *)kSecClass: (__bridge NSString *)kSecClassKey,
-        (__bridge NSString *)kSecAttrApplicationTag: [keyTag dataUsingEncoding:NSUTF8StringEncoding],
+        (__bridge NSString *)kSecAttrApplicationTag: [publicKeyTag dataUsingEncoding:NSUTF8StringEncoding],
         (__bridge NSString *)kSecAttrKeyType: (__bridge NSString *)kSecAttrKeyTypeRSA,
         (__bridge NSString *)kSecReturnRef: @YES,
     };

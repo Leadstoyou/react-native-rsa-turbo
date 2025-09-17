@@ -31,7 +31,10 @@
     "React-jsiexecutor": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-hermes": [
 
     ],
     "React-domnativemodule": [

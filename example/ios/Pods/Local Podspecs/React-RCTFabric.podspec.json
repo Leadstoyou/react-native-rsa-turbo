@@ -98,7 +98,10 @@
     "React-renderercss": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-hermes": [
 
     ]
   },

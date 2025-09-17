@@ -76,7 +76,10 @@
     "React-rendererdebug": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-hermes": [
 
     ]
   }

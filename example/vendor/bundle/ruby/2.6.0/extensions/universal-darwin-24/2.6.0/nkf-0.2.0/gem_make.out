@@ -1,5 +1,5 @@
 current directory: /Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/nkf-0.2.0/ext/nkf
-/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20250912-78931-1uuwo3a.rb extconf.rb
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20250916-41508-1g9wu35.rb extconf.rb
 creating Makefile
 
 current directory: /Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/nkf-0.2.0/ext/nkf
@@ -13,4 +13,4 @@ ld: warning: search path '/AppleInternal/Library/BuildRoots/1c8f7852-1ca9-11f0-b
 
 current directory: /Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/nkf-0.2.0/ext/nkf
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nkf.bundle ./.gem.20250912-78931-18797yj
+/usr/bin/install -c -m 0755 nkf.bundle ./.gem.20250916-41508-5p2drw

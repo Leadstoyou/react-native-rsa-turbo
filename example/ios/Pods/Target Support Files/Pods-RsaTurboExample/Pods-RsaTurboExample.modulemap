@@ -1,6 +1,0 @@
-module Pods_RsaTurboExample {
-  umbrella header "Pods-RsaTurboExample-umbrella.h"
-
-  export *
-  module * { export * }
-}

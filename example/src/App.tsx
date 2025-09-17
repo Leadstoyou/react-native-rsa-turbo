@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState, useEffect } from 'react';
 import {
   ActivityIndicator,
   Button,
@@ -12,7 +12,7 @@ import {
   View,
   Pressable,
 } from 'react-native';
-import { RSA, RSAKeychain, type Algorithm } from 'react-native-rsa-turbo';
+import { RSA, RSAKeychain, type Algorithm } from '../../src';
 
 // Import polyfills first
 import '../polyfills';
@@ -60,6 +60,12 @@ export default function App() {
   const [algo, setAlgo] = useState<Algorithm>('SHA512withRSA');
   const [bits, setBits] = useState('2048');
 
+  // Set up error handling on component mount
+  useEffect(() => {
+    // ErrorUtils should already be set up by polyfills/index.js
+    // console.log('App component mounted, ErrorUtils available:', !!global.ErrorUtils);
+  }, []);
+
   // PEM states
   const [pemKeys, setPemKeys] = useState<KeyPair | null>(null);
   const [pemEnc, setPemEnc] = useState('');
@@ -67,7 +73,7 @@ export default function App() {
   const [pemSig, setPemSig] = useState('');
   const [pemVerify, setPemVerify] = useState<boolean | null>(null);
 
-  // Keystore (Android)
+  // Keystore/Keychain (Android/iOS)
   const [keyTag, setKeyTag] = useState(DEFAULT_KEY_TAG);
   const [ksPub, setKsPub] = useState('');
   const [ksEnc, setKsEnc] = useState('');
@@ -76,6 +82,7 @@ export default function App() {
   const [ksVerify, setKsVerify] = useState<boolean | null>(null);
 
   const isAndroid = Platform.OS === 'android';
+  const isIOS = Platform.OS === 'ios';
 
   const resetPem = () => {
     setPemEnc('');
@@ -153,10 +160,10 @@ export default function App() {
       setPemVerify(ok);
     });
 
-  // ===== Android Keystore actions =====
+  // ===== Keystore/Keychain actions (Android/iOS) =====
   const onKsGenerate = () =>
     runSafe(async () => {
-      if (!isAndroid) {
+      if (!isAndroid && !isIOS) {
         return;
       }
       resetKs();
@@ -167,11 +174,11 @@ export default function App() {
 
   const onKsEncrypt = () =>
     runSafe(async () => {
-      if (!isAndroid) {
+      if (!isAndroid && !isIOS) {
         return;
       }
       if (!ksPub) {
-        throw new Error('No Keystore public key yet. Generate first.');
+        throw new Error('No Keystore/Keychain public key yet. Generate first.');
       }
       const enc = await RSAKeychain.encrypt(message, keyTag);
       setKsEnc(enc);
@@ -179,7 +186,7 @@ export default function App() {
 
   const onKsDecrypt = () =>
     runSafe(async () => {
-      if (!isAndroid) {
+      if (!isAndroid && !isIOS) {
         return;
       }
       if (!ksEnc) {
@@ -191,11 +198,11 @@ export default function App() {
 
   const onKsSign = () =>
     runSafe(async () => {
-      if (!isAndroid) {
+      if (!isAndroid && !isIOS) {
         return;
       }
       if (!ksPub) {
-        throw new Error('No Keystore key yet. Generate first.');
+        throw new Error('No Keystore/Keychain key yet. Generate first.');
       }
       const sig = await RSAKeychain.sign(message, keyTag, algo);
       setKsSig(sig);
@@ -203,7 +210,7 @@ export default function App() {
 
   const onKsVerify = () =>
     runSafe(async () => {
-      if (!isAndroid) {
+      if (!isAndroid && !isIOS) {
         return;
       }
       if (!ksSig) {
@@ -215,7 +222,7 @@ export default function App() {
 
   const onKsDelete = () =>
     runSafe(async () => {
-      if (!isAndroid) {
+      if (!isAndroid && !isIOS) {
         return;
       }
       await RSAKeychain.deletePrivateKey(keyTag);
@@ -291,7 +298,7 @@ export default function App() {
             <Text style={styles.label}>Algorithm</Text>
             {AlgoSwitch}
           </View>
-          {isAndroid && (
+          {(isAndroid || isIOS) && (
             <View style={styles.row}>
               <Text style={styles.label}>Key Tag</Text>
               <TextInput
@@ -343,10 +350,12 @@ export default function App() {
           </Text>
         </View>
 
-        {/* Android Keystore Section */}
-        {isAndroid && (
+        {/* Keystore/Keychain Section */}
+        {(isAndroid || isIOS) && (
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Android Keystore</Text>
+            <Text style={styles.cardTitle}>
+              {isAndroid ? 'Android Keystore' : 'iOS Keychain'}
+            </Text>
             <View style={styles.rowWrap}>
               <Button title="Generate" onPress={onKsGenerate} />
               <Button title="Encrypt" onPress={onKsEncrypt} />
@@ -385,7 +394,7 @@ export default function App() {
         {busy && (
           <View style={styles.overlay}>
             <ActivityIndicator size="large" />
-            <Text style={{ marginTop: 8 }}>Processing…</Text>
+            <Text style={styles.processingText}>Processing…</Text>
           </View>
         )}
       </ScrollView>
@@ -466,5 +475,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffffdd',
     borderRadius: 10,
     alignItems: 'center',
+  },
+  processingText: {
+    marginTop: 8,
   },
 });

@@ -1,5 +1,5 @@
 current directory: /Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/ffi-1.17.2/ext/ffi_c
-/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20250912-78931-inis7r.rb extconf.rb
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20250916-41508-17skzgv.rb extconf.rb
 checking for ffi_prep_closure_loc() in -lffi... no
 checking for ffi_prep_closure_loc() in -llibffi... no
 checking for ffi_prep_closure_loc() in -llibffi-8... no
@@ -4196,7 +4196,6 @@ Making all in testsuite
 make[3]: Nothing to be done for `all'.
 Making all in man
 make[3]: Nothing to be done for `all'.
-make[3]: Nothing to be done for `all-am'.
 compiling AbstractMemory.c
 AbstractMemory.c:1125:17: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
  1125 |     id_to_ptr = rb_intern("to_ptr");
@@ -8316,4 +8315,4 @@ ld: warning: alignment (1) of atom 'anon-6' (/Users/user/Desktop/Projects/react-
 ld: warning: alignment (1) of atom 'anon-7' (/Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/ffi-1.17.2/ext/ffi_c/libffi-universal-darwin24/.libs/libffi_convenience.a[9](unix64.o)) is too small and may result in unaligned pointers 
 ld: warning: alignment (1) of atom 'anon-8' (/Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/ffi-1.17.2/ext/ffi_c/libffi-universal-darwin24/.libs/libffi_convenience.a[9](unix64.o)) is too small and may result in unaligned pointers 
 ld: warning: alignment (1) of atom 'anon-9' (/Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/ffi-1.17.2/ext/ffi_c/libffi-universal-darwin24/.libs/libffi_convenience.a[9](unix64.o)) is too small and may result in unaligned pointers 
-/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20250912-78931-qnmmmw
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20250916-41508-emq2rj

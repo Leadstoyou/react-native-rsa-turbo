@@ -77,7 +77,10 @@
     "React-graphics": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-hermes": [
 
     ]
   },

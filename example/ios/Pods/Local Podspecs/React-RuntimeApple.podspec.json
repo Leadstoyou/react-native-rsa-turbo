@@ -15,7 +15,7 @@
   "source_files": "ReactCommon/*.{mm,h}",
   "header_dir": "ReactCommon",
   "pod_target_xcconfig": {
-    "HEADER_SEARCH_PATHS": "$(PODS_ROOT)/boost $(PODS_ROOT)/Headers/Private/React-Core $(PODS_TARGET_SRCROOT)/../../../.. $(PODS_TARGET_SRCROOT)/../../../../.. \"${PODS_CONFIGURATION_BUILD_DIR}/React-jsitooling/JSITooling.framework/Headers\" \"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTFBReactNativeSpec/React_RCTFBReactNativeSpec.framework/Headers\"",
+    "HEADER_SEARCH_PATHS": "$(PODS_ROOT)/boost $(PODS_ROOT)/Headers/Private/React-Core $(PODS_TARGET_SRCROOT)/../../../.. $(PODS_TARGET_SRCROOT)/../../../../.. \"${PODS_CONFIGURATION_BUILD_DIR}/React-jsitooling/JSITooling.framework/Headers\" \"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTFBReactNativeSpec/React_RCTFBReactNativeSpec.framework/Headers\" \"${PODS_CONFIGURATION_BUILD_DIR}/React-RuntimeHermes/React_RuntimeHermes.framework/Headers\"",
     "USE_HEADERMAP": "YES",
     "CLANG_CXX_LANGUAGE_STANDARD": "c++20",
     "GCC_WARN_PEDANTIC": "YES"
@@ -79,9 +79,12 @@
     "React-RCTFBReactNativeSpec": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-RuntimeHermes": [
 
     ]
   },
-  "exclude_files": "ReactCommon/RCTHermesInstance.{mm,h}"
+  "exclude_files": "ReactCommon/RCTJscInstance.{mm,h}"
 }

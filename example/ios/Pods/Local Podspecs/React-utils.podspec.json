@@ -31,7 +31,10 @@
     "glog": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-hermes": [
 
     ],
     "React-debug": [

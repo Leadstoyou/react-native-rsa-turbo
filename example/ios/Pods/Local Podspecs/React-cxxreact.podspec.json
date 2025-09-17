@@ -65,6 +65,9 @@
     ],
     "React-timing": [
       "0.79.6"
+    ],
+    "hermes-engine": [
+
     ]
   },
   "resource_bundles": {

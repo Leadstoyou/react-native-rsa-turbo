@@ -3484,11 +3484,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 24.4.0
-  resolution: "@types/node@npm:24.4.0"
+  version: 24.5.0
+  resolution: "@types/node@npm:24.5.0"
   dependencies:
-    undici-types: ~7.11.0
-  checksum: a081561c1bd434f2c82e528aa39d6e24433de521f638a5b0a7c2a1e2013351a556011894bcda7983016bdecb4ae5ee80672b0a96167c9b6be5ab948fcc827d00
+    undici-types: ~7.12.0
+  checksum: ae97c80b1edce278b3e0b5d8ad432b545b850b4b21a43b1202fae66b5d35f0a38c5e1b8eb2006225929c600f458daec6c1654f72a02bab6fe6414e3b35140d99
   languageName: node
   linkType: hard
 
@@ -4307,11 +4307,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.8.2":
-  version: 2.8.3
-  resolution: "baseline-browser-mapping@npm:2.8.3"
+  version: 2.8.4
+  resolution: "baseline-browser-mapping@npm:2.8.4"
   bin:
     baseline-browser-mapping: dist/cli.js
-  checksum: 5b68bebb5ff1e2266e9252fdf13f23679ebd3b884cc4165a7257e6a09c5fdc51a1fb98bac24a78e3bf7c429f7a4c05743733e6255f0a6403ace8e6fcefd2ed53
+  checksum: c9580e27141fdaff3ad219a14906774c80a040f45527213d867ce8a2db02a60cf1db545041bfb69a9482c3101c5a0cd3cef1155cde3f1ba8e98bf817667756c5
   languageName: node
   linkType: hard
 
@@ -5658,11 +5658,11 @@ __metadata:
   linkType: hard
 
 "error-ex@npm:^1.3.1":
-  version: 1.3.2
-  resolution: "error-ex@npm:1.3.2"
+  version: 1.3.4
+  resolution: "error-ex@npm:1.3.4"
   dependencies:
     is-arrayish: ^0.2.1
-  checksum: c1c2b8b65f9c91b0f9d75f0debaa7ec5b35c266c2cac5de412c1a6de86d4cbae04ae44e510378cb14d032d0645a36925d0186f8bb7367bcc629db256b743a001
+  checksum: 25136c0984569c8d68417036a9a1624804314296f24675199a391e5d20b2e26fe6d9304d40901293fa86900603a229983c9a8921ea7f1d16f814c2db946ff4ef
   languageName: node
   linkType: hard
 
@@ -9595,14 +9595,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minipass@npm:^4.2.4":
+"minipass@npm:^4.2.4, minipass@npm:^7.0.2, minipass@npm:^7.0.3, minipass@npm:^7.0.4, minipass@npm:^7.1.2":
   version: 4.2.8
   resolution: "minipass@npm:4.2.8"
   checksum: 7f4914d5295a9a30807cae5227a37a926e6d910c03f315930fde52332cf0575dfbc20295318f91f0baf0e6bb11a6f668e30cde8027dea7a11b9d159867a3c830
   languageName: node
   linkType: hard
 
-"minipass@npm:^5.0.0 || ^6.0.2 || ^7.0.0, minipass@npm:^7.0.2, minipass@npm:^7.0.3, minipass@npm:^7.0.4, minipass@npm:^7.1.2":
+"minipass@npm:^5.0.0 || ^6.0.2 || ^7.0.0":
   version: 7.1.2
   resolution: "minipass@npm:7.1.2"
   checksum: 2bfd325b95c555f2b4d2814d49325691c7bee937d753814861b0b49d5edcda55cbbf22b6b6a60bb91eddac8668771f03c5ff647dcd9d0f798e9548b9cdc46ee3
@@ -9825,17 +9825,17 @@ __metadata:
   linkType: hard
 
 "nypm@npm:^0.6.0":
-  version: 0.6.1
-  resolution: "nypm@npm:0.6.1"
+  version: 0.6.2
+  resolution: "nypm@npm:0.6.2"
   dependencies:
     citty: ^0.1.6
     consola: ^3.4.2
     pathe: ^2.0.3
-    pkg-types: ^2.2.0
+    pkg-types: ^2.3.0
     tinyexec: ^1.0.1
   bin:
     nypm: dist/cli.mjs
-  checksum: 6d6cfe2fc1f6b16833c4084ec51d4b573b57dfd8efe014ede08c067cca329e1c8277060ffff6e2c8db093dd9d28a02648e2a706d6dae77a625fcc6861b7caf58
+  checksum: 8cbbbfb3ead13d4c05223da4bb47a4341a69e27055631b152ca368c07d470f62e4e44edbb33403d3777359bd06a07d41f616320fc7f4b7f0926aba657cc34d2e
   languageName: node
   linkType: hard
 
@@ -10407,7 +10407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pkg-types@npm:^2.2.0":
+"pkg-types@npm:^2.2.0, pkg-types@npm:^2.3.0":
   version: 2.3.0
   resolution: "pkg-types@npm:2.3.0"
   dependencies:
@@ -12343,10 +12343,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~7.11.0":
-  version: 7.11.0
-  resolution: "undici-types@npm:7.11.0"
-  checksum: 8f6d0dc0e4d96aff2f2d87163a40643d93d841484b06dbaeef0ec534ddbfeaa8459918ac990467263f71f229f9891dcc36242f51d71dcce293ff86f4c16f66b4
+"undici-types@npm:~7.12.0":
+  version: 7.12.0
+  resolution: "undici-types@npm:7.12.0"
+  checksum: 4ad2770b92835757eee6416e8518972d83fc77286c11af81d368a55578d9e4f7ab1b8a3b13c304b0e25a400583e66f3c58464a051f8b5c801ab5d092da13903e
   languageName: node
   linkType: hard
 
@@ -12382,9 +12382,9 @@ __metadata:
   linkType: hard
 
 "unicode-property-aliases-ecmascript@npm:^2.0.0":
-  version: 2.1.0
-  resolution: "unicode-property-aliases-ecmascript@npm:2.1.0"
-  checksum: 243524431893649b62cc674d877bd64ef292d6071dd2fd01ab4d5ad26efbc104ffcd064f93f8a06b7e4ec54c172bf03f6417921a0d8c3a9994161fe1f88f815b
+  version: 2.2.0
+  resolution: "unicode-property-aliases-ecmascript@npm:2.2.0"
+  checksum: 0dd0f6e70130c59b4a841bac206758f70227b113145e4afe238161e3e8540e8eb79963e7a228cd90ad13d499e96f7ef4ee8940835404b2181ad9bf9c174818e3
   languageName: node
   linkType: hard
 

@@ -46,7 +46,10 @@
     "ReactCommon": [
 
     ],
-    "React-jsc": [
+    "hermes-engine": [
+
+    ],
+    "React-hermes": [
 
     ]
   },
