@@ -19,6 +19,7 @@ class RSATurboModule(reactContext: ReactApplicationContext) :
   companion object {
     const val NAME = "RSATurbo"
     private const val CIPHER_RSA = "RSA/ECB/PKCS1Padding"
+    private const val CIPHER_RSA_OAEP = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
     private const val DEFAULT_SIG_ALG = "SHA512withRSA"
     private val UTF8: Charset = Charsets.UTF_8
   }
@@ -96,9 +97,9 @@ class RSATurboModule(reactContext: ReactApplicationContext) :
           KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT or
           KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
         )
-          .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
+          .setDigests(KeyProperties.DIGEST_SHA256)
           .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
-          .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+          .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
           .setKeySize(bits.toInt())
           .build()
       )
@@ -127,7 +128,7 @@ class RSATurboModule(reactContext: ReactApplicationContext) :
     try {
       val entry = getKeyStoreEntryOrThrow(keyTag)
       val pub = entry.certificate.publicKey
-      val cipher = Cipher.getInstance(CIPHER_RSA)
+      val cipher = Cipher.getInstance(CIPHER_RSA_OAEP)
       cipher.init(Cipher.ENCRYPT_MODE, pub)
       val enc = cipher.doFinal(message.toByteArray(UTF8))
       promise.resolve(Base64.encodeToString(enc, Base64.NO_WRAP))
@@ -138,7 +139,7 @@ class RSATurboModule(reactContext: ReactApplicationContext) :
     try {
       val entry = getKeyStoreEntryOrThrow(keyTag)
       val priv = entry.privateKey
-      val cipher = Cipher.getInstance(CIPHER_RSA)
+      val cipher = Cipher.getInstance(CIPHER_RSA_OAEP)
       cipher.init(Cipher.DECRYPT_MODE, priv)
       val dec = cipher.doFinal(Base64.decode(encoded, Base64.NO_WRAP))
       promise.resolve(String(dec, UTF8))

@@ -297,7 +297,7 @@ RCT_EXPORT_METHOD(kcEncrypt:(NSString *)message
         
         NSData *encryptedData = (__bridge_transfer NSData *)SecKeyCreateEncryptedData(
             publicKey,
-            kSecKeyAlgorithmRSAEncryptionPKCS1,
+            kSecKeyAlgorithmRSAEncryptionOAEPSHA256,
             (__bridge CFDataRef)messageData,
             &error
         );
@@ -337,7 +337,7 @@ RCT_EXPORT_METHOD(kcDecrypt:(NSString *)encoded
         CFErrorRef error = NULL;
         NSData *decryptedData = (__bridge_transfer NSData *)SecKeyCreateDecryptedData(
             privateKey,
-            kSecKeyAlgorithmRSAEncryptionPKCS1,
+            kSecKeyAlgorithmRSAEncryptionOAEPSHA256,
             (__bridge CFDataRef)encryptedData,
             &error
         );
