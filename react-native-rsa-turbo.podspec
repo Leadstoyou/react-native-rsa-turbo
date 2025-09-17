@@ -30,12 +30,11 @@ Pod::Spec.new do |s|
   # Hỗ trợ New Architecture (TurboModule) khi app bật RCT_NEW_ARCH_ENABLED=1
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1'
     s.compiler_flags = "-DRCT_NEW_ARCH_ENABLED=1"
-  s.pod_target_xcconfig = {
-  "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/Headers/Public/React-Codegen"
-}
+    s.pod_target_xcconfig = {
+      "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/Headers/Public/React-Codegen"
+    }
 
     s.dependency "React-Codegen"
-    s.dependency "FBReactNativeSpec"
     s.dependency "RCTRequired"
     s.dependency "RCTTypeSafety"
     s.dependency "ReactCommon/turbomodule/core"

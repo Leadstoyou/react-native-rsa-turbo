@@ -1,5 +1,5 @@
 current directory: /Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/json-2.7.6/ext/json/ext/parser
-/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20250912-78931-1dpkyfl.rb extconf.rb
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20250916-41508-1xjvsau.rb extconf.rb
 checking for rb_enc_raise() in ruby.h... yes
 checking for rb_enc_interned_str() in ruby.h... no
 checking for whether -std=c99 is accepted as CFLAGS... yes
@@ -16,4 +16,4 @@ ld: warning: search path '/AppleInternal/Library/BuildRoots/1c8f7852-1ca9-11f0-b
 
 current directory: /Users/user/Desktop/Projects/react-native-rsa-turbo/example/vendor/bundle/ruby/2.6.0/gems/json-2.7.6/ext/json/ext/parser
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 parser.bundle ./.gem.20250912-78931-12b8jx1/json/ext
+/usr/bin/install -c -m 0755 parser.bundle ./.gem.20250916-41508-iilhm0/json/ext

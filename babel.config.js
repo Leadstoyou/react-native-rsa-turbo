@@ -3,9 +3,12 @@ module.exports = {
     {
       exclude: /\/node_modules\//,
       presets: [
-        ['module:react-native-builder-bob/babel-preset', {
-          modules: 'commonjs'
-        }]
+        [
+          'module:react-native-builder-bob/babel-preset',
+          {
+            modules: 'commonjs',
+          },
+        ],
       ],
     },
     {

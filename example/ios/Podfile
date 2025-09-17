@@ -1,8 +1,8 @@
-ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+ENV['RCT_NEW_ARCH_ENABLED'] = '0'
 
 platform :ios, '15.1'
 
-require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../../node_modules/react-native/scripts/react_native_pods'
 
 prepare_react_native_project!
 
@@ -11,13 +11,13 @@ if linkage
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
   use_frameworks! :linkage => linkage.to_sym
 end
-
 target 'RsaTurboExample' do
   config = use_native_modules!
 
   use_react_native!(
     :path => config[:reactNativePath],
-    :app_path => "#{Pod::Config.instance.installation_root}/.."
+    :app_path => "#{Pod::Config.instance.installation_root}/..",
+    :hermes_enabled => true
   )
 
   post_install do |installer|
